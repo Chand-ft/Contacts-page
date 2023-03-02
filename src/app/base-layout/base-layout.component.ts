@@ -1,5 +1,11 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { ContactsServiceService } from '../contacts-service.service';
+import { MatDialog } from '@angular/material/dialog';
+// import { AddContactDialogComponent } from '../add-contact-dialog-component';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AddContactDialogComponentComponent } from '../add-contact-dialog-component/add-contact-dialog-component.component';
+
+
 
 interface Contacts {
   firstName: string;
@@ -16,8 +22,11 @@ interface Contacts {
   styleUrls: ['./base-layout.component.scss'],
 })
 export class BaseLayoutComponent implements OnInit {
+  
+
   @ViewChild('filterInput') filterInput!: ElementRef<HTMLInputElement>;
-  constructor(private contactsService: ContactsServiceService) {}
+  constructor(private contactsService: ContactsServiceService, public dialog: MatDialog) {}
+  
 
   contactsClicked: Boolean = false;
   aboutMeClicked: Boolean = true;
@@ -30,8 +39,11 @@ export class BaseLayoutComponent implements OnInit {
 
   ngOnInit(): void {
     this.getContactsData();
+
     
   }
+
+
   filteringContacts(){
     this.upperCaseSearch = this.userSearch.toUpperCase();
 return this.contacts.filter((element) =>{
@@ -40,7 +52,7 @@ return this.contacts.filter((element) =>{
   || element.cellNumber.includes(this.upperCaseSearch)
   // || (element.firstName.toUpperCase().includes(this.upperCaseSearch) &&element.lastName.toUpperCase().includes(this.upperCaseSearch))
   
-  //TODO Partition names individually 
+//   //TODO Partition names individually 
 
 }) 
   }
@@ -58,12 +70,18 @@ return this.contacts.filter((element) =>{
     this.contactsService.getDataFromJson().subscribe((contacts: any) => {
       this.contacts = contacts;
       this.filteredContacts = contacts; // initialize filteredContacts to all contacts
+      console.log("names",this.contacts)
     });
   }
 
   selectCard(contact:any){
     this.selectedContact = contact;
+    this.fetchAge();
   }
+  fetchAge(){
+    this.contactsService.getAge(this.selectedContact.firstName).subscribe(data =>
+      this.selectedContact.age = data["age"]
+  )}
 
 onFilterContacts(searchValue: string) {
   this.filteredContacts = this.contacts.filter((contact) => {
@@ -75,6 +93,23 @@ onFilterContacts(searchValue: string) {
         .includes(searchValue.toLowerCase()) ||
       contact.cellNumber.includes(searchValue)
     );
+  }
+  );
+}
+
+openAddContactDialog(): void {
+  const dialogRef = this.dialog.open(AddContactDialogComponentComponent, {
+    width: '600px',
+    height: 'auto',
+    data: {} // You can pass data to the dialog using this property
+  });
+
+  dialogRef.afterClosed().subscribe(result => {
+    console.log('The dialog was closed', result);
+
+    // You can do something after the dialog is closed here
   });
 }
+
 }
+

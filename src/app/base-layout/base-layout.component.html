@@ -29,7 +29,7 @@
       <div fxLayout="column" fxLayoutAlign="start center" class="content" *ngIf="!aboutMeClicked">
         <div class="search-container">
           <input type="text" placeholder="Search" class="contactsFilter" [(ngModel)]="userSearch"/>
-          <button class="add-button">Add</button>
+          <button class="add-button" (click)="openAddContactDialog()">Add</button>
         </div>
         <p class="fadedGreyText">Contacts</p>
         <div

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import {FormsModule}   from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -13,6 +13,9 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import {HttpClientModule } from '@angular/common/http';
 import { ContactCardComponent } from './contact-card/contact-card.component';
+import { AddContactDialogComponentComponent } from './add-contact-dialog-component/add-contact-dialog-component.component';
+import {MatDialogModule} from '@angular/material/dialog';
+
 
 
 
@@ -22,7 +25,8 @@ import { ContactCardComponent } from './contact-card/contact-card.component';
     ContactsComponent,
     AboutMeComponent,
     BaseLayoutComponent,
-    ContactCardComponent
+    ContactCardComponent,
+    AddContactDialogComponentComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +36,9 @@ import { ContactCardComponent } from './contact-card/contact-card.component';
     MatSidenavModule,
     FlexLayoutModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    MatDialogModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

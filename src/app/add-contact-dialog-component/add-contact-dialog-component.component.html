@@ -1,0 +1,44 @@
+<form [formGroup]="addContactsForm" (ngSubmit)="submitForm()">
+    <div>
+      <label class="bottomMargin10" for="firstName">First Name:</label>
+      <input type="text" formControlName="firstName" id="firstName" required maxlength="50" />
+      <div class="errorMessage" *ngIf="addContactsForm.get('firstName').invalid && (addContactsForm.get('firstName').dirty || addContactsForm.get('firstName').touched)">
+        <div class="errorMessage" *ngIf="addContactsForm.get('firstName').errors.required">First Name is required.</div>
+        <div class="errorMessage" *ngIf="addContactsForm.get('firstName').errors.maxlength">Maximum length of 50 characters.</div>
+      </div>
+    </div>
+    <div>
+      <label class="bottomMargin10" for="lastName">Last Name:</label>
+      <input type="text" formControlName="lastName" id="lastName" required maxlength="50" />
+      <div class="errorMessage" *ngIf="addContactsForm.get('lastName').invalid && (addContactsForm.get('lastName').dirty || addContactsForm.get('lastName').touched)">
+        <div class="errorMessage" *ngIf="addContactsForm.get('lastName').errors.required">Last Name is required.</div>
+        <div class="errorMessage" *ngIf="addContactsForm.get('lastName').errors.maxlength">Maximum length of 50 characters.</div>
+      </div>
+    </div>
+    <div>
+      <label class="bottomMargin10" for="cellNumber" >Cellphone Number:</label>
+      <input type="tel" formControlName="cellNumber" id="cellNumber" pattern="[0-9]*" required class="inputStyle"/>
+      <div class="errorMessage" *ngIf="addContactsForm.get('cellNumber').invalid && (addContactsForm.get('cellNumber').dirty || addContactsForm.get('cellNumber').touched)">
+        <div class="errorMessage" *ngIf="addContactsForm.get('cellNumber').errors.required">Cellphone Number is required.</div>
+        <div class="errorMessage" *ngIf="addContactsForm.get('cellNumber').errors.pattern">Numbers only (leading 0 allowed).</div>
+      </div>
+    </div>
+    <div>
+      <label class="bottomMargin10" for="address">Address:</label>
+      <input type="text" formControlName="address" id="address" required maxlength="255" />
+      <div class="errorMessage" *ngIf="addContactsForm.get('address').invalid && (addContactsForm.get('address').dirty || addContactsForm.get('address').touched)">
+        <div class="errorMessage" *ngIf="addContactsForm.get('address').errors.required">Address is required.</div>
+        <div class="errorMessage" *ngIf="addContactsForm.get('address').errors.maxlength">Maximum length of 255 characters.</div>
+      </div>
+    </div>
+    <div>
+      <label class="bottomMargin10" for="bio">Biography:</label>
+      <textarea formControlName="bio" id="bio" required maxlength="255" class="inputStyle"></textarea>
+      <div class="errorMessage" *ngIf="addContactsForm.get('bio').invalid && (addContactsForm.get('bio').dirty || addContactsForm.get('bio').touched)">
+        <div class="errorMessage" *ngIf="addContactsForm.get('bio').errors.required">Biography is required.</div>
+        <div class="errorMessage" *ngIf="addContactsForm.get('bio').errors.maxlength">Maximum length of 255 characters.</div>
+      </div>
+    </div>
+    <button type="submit" [disabled]="addContactsForm.invalid" class="submitButton">Submit</button>
+  </form>
+  

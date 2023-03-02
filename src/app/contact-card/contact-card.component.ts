@@ -6,12 +6,15 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./contact-card.component.scss']
 })
 export class ContactCardComponent implements OnInit {
+  @Input() selectedContact:any
   contactSelected:any =false
-@Input() selectedContact:any
-  constructor() { }
+
+
+  constructor( ) {}
+
+
 
   ngOnInit(): void {
-    console.log(this.selectedContact)
     this.contactSelected = true
   }
 
