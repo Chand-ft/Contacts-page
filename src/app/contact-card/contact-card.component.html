@@ -1,0 +1,36 @@
+<div class="contact-card">
+    <h1 *ngIf="!contactSelected">{{selectedContact.firstName+" "+selectedContact.lastName}}</h1>
+    <h1 *ngIf="contactSelected">Select a contact</h1>
+
+    <div
+      fxLayout="row"
+      fxLayoutAlign="space-around center"
+      fxLayoutGap="10px"
+    >
+      <div fxLayout="column" fxLayoutAlign="center start">
+        <div class="section">
+          <h2>Cellphone:</h2>
+          <p>{{selectedContact.cellNumber}}</p>
+        </div>
+        <div class="section">
+          <h2>Email:</h2>
+          <p>{{selectedContact.email}}</p>
+        </div>
+      </div>
+      <div fxLayout="column" fxLayoutAlign="center start">
+        <div class="section">
+          <h2>Address:</h2>
+          <p>{{selectedContact.address}}</p>
+        </div>
+        <div class="section">
+          <h2>Age:</h2>
+          <p>35</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="textUnderCard">
+    <h1>Contact Bio</h1>
+    <p>{{selectedContact.bio}}
+    </p>
+  </div>

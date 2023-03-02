@@ -1,1 +1,160 @@
 /* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+  height: 100%;
+}
+body,
+p {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+:root {
+  --mainLightBlue: #54a4e1;
+}
+
+.container {
+  height: 100vh;
+}
+
+.header {
+  height: 60px;
+  width: 100%;
+  background-color: black;
+  color: white;
+}
+
+.main {
+  flex: 1;
+  box-shadow: rgba(0 0 0 / 35%) 0px 20px 30px 0px;
+}
+
+.leftMostPanel {
+  width: 60px;
+  // background-color: red;
+  // box-shadow: 5px 0px #888888 !important;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
+
+.content {
+  // flex: 1;
+  width: 270px;
+  background-color: #e2e2e2;
+  box-shadow: rgb(0 0 0 / 35%) 10px 10px 20px 0px inset;
+}
+
+.aside {
+  flex: 1;
+  // background-color: green;
+  width: 100vw;
+}
+
+.fullWidth {
+  width: 100vw;
+}
+.iconsMarginTop {
+  margin-top: 10px;
+}
+.material-symbols-outlined {
+  margin-top: 25px;
+  cursor: pointer;
+  background-color: transparent;
+}
+
+.material-symbols-outlined:hover {
+  background-color: #eee;
+}
+
+.material-symbols-outlined:active {
+  background-color: #ccc;
+}
+
+.search-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 60px;
+  margin-bottom: 25px;
+
+  input[type="text"] {
+    padding: 10px;
+    border: none;
+    border-radius: 3px;
+    width: 150px;
+    font-size: 16px;
+    background-color: #f2f2f2;
+    margin-right: 10px;
+  }
+
+  input[type="text"]::placeholder {
+    color: #666666;
+  }
+
+  .add-button {
+    padding: 10px 20px;
+    background-color: var(--mainLightBlue);
+    border: none;
+    border-radius: 3px;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+  }
+
+  .add-button:hover {
+    background-color: var(--mainLightBlue);
+  }
+}
+.contactInitials {
+  background-color: var(--mainLightBlue);
+  color: #fff;
+  border-radius: 50%;
+  padding: 25px;
+  margin-right: 25px;
+}
+.fadedGreyText {
+  font-weight: bold;
+  color: #666666;
+  font-size: 17px;
+  margin-bottom: 20px;
+}
+.textUnderCard{
+  margin-left: 50px;
+  margin-top: 50px;
+
+}
+.contact-card,
+.bio-card {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgb(0 0 0 / 30%);
+  padding: 20px;
+  height: fit-content;
+  margin-top: 50px;
+  margin-left: 50px;
+  width: 400px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+
+  h1 {
+    font-size: 24px;
+    margin: 0;
+    padding-bottom: 10px;
+    text-align: center;
+  }
+
+  .section {
+    margin-bottom: 10px;
+  }
+
+  .section h2 {
+    font-size: 16px;
+    font-weight: bold;
+    margin: 0;
+    padding-bottom: 5px;
+  }
+
+  .section p {
+    font-size: 14px;
+    margin: 0;
+  }
+}

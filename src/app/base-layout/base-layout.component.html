@@ -1,0 +1,59 @@
+<!-- 
+<app-about-me></app-about-me>
+<app-contacts></app-contacts> -->
+
+<link
+  rel="stylesheet"
+  href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+/>
+
+<div fxLayout="row" fxLayoutAlign="start stretch">
+  <div fxLayout="column" fxLayoutAlign="stretch stretch" class="container">
+    <div fxLayout="row" fxLayoutAlign="stretch" class="main">
+      <div fxLayoutAlign="stretch" fxLayout="column" class="leftMostPanel">
+        <div class="iconsMarginTop">
+          <div fxLayout="row" fxLayoutAlign="center center">
+            <span class="material-symbols-outlined" (click)="clickContacts()">
+              contacts
+            </span>
+          </div>
+          <div fxLayout="row" fxLayoutAlign="center center">
+            <span class="material-symbols-outlined" (click)="clickAboutMe()">
+              info
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Contacts div -->
+      <div fxLayout="column" fxLayoutAlign="start center" class="content" *ngIf="!aboutMeClicked">
+        <div class="search-container">
+          <input type="text" placeholder="Search" class="contactsFilter" [(ngModel)]="userSearch"/>
+          <button class="add-button">Add</button>
+        </div>
+        <p class="fadedGreyText">Contacts</p>
+        <div
+          fxLayout="row"
+          fxLayoutAlign="center center"
+          *ngFor="let contact of filteringContacts()"
+          (click)="selectCard(contact)"
+        >
+          <div fxLayout="column" fxLayoutAlign="center start">
+            <p class="contactInitials">{{ contact.firstName[0]+contact.lastName[0] }}</p>
+          </div>
+          <div fxLayout="column" fxLayoutAlign="center center" class="contacts">
+            <p>{{contact.firstName+" "+contact.lastName}}</p>
+            <p>{{contact.cellNumber}}</p>
+          </div>
+        </div>
+      </div>
+<!-- contacts -->
+
+      <div fxLayout="column" fxLayoutAlign="stretch" class="aside">
+<app-contact-card [selectedContact]="selectedContact"  *ngIf="!aboutMeClicked"></app-contact-card>
+
+<app-about-me *ngIf="aboutMeClicked"></app-about-me>
+      </div>
+    </div>
+  </div>
+</div>
